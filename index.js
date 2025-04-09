@@ -9,26 +9,27 @@ const dbConnection = require("./db/dbConfig");
 // for db creation
 const database_creation = require("./routes/dbCreationRoute");
 app.use("/", database_creation);
-// Define allowed origins dynamically for local and production environments
-const allowedOrigins = [
-  "https://evangadi-bestforum2025.netlify.app",  // Production URL (Netlify)
-  "http://localhost:3000",  // Local development URL
-];
-
+// Add CORS configuration to allow your Netlify domain
 const corsOptions = {
   origin: function (origin, callback) {
-    
+    // Check if the origin is allowed (your frontend on Netlify)
+    const allowedOrigins = [
+      "https://evangadi-best2025forum.netlify.app",  
+      "http://localhost:3000", 
+    ];
+
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
+      callback(null, true);  
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error("Not allowed by CORS")); 
     }
   },
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-app.use(cors(corsOptions)); 
+// Apply CORS middleware with the specified options
+app.use(cors(corsOptions));
 
 // json middleware to extract json data
 app.use(express.json());
