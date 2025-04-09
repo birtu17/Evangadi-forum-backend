@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authMiddleware = require("../middleWare/authMiddleware");
+const authMiddleware = require("../middleware/authMiddleware");
 const {
   allQuestions,
   postQuestion,
@@ -8,8 +8,7 @@ const {
   likeQuestion,
   disLikeQuestion,
   oldestQuestions,
-    likedQuestions,
-  
+  likedQuestions,
 } = require("../controller/questionController");
 router.get("/all-questions", authMiddleware, allQuestions);
 router.get("/oldest-questions", authMiddleware, oldestQuestions);
