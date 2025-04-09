@@ -14,8 +14,8 @@ const corsOptions = {
   origin: function (origin, callback) {
     // Check if the origin is allowed (your frontend on Netlify)
     const allowedOrigins = [
-      "https://evangadi-best2025forum.netlify.app",  
-      "http://localhost:3000", 
+      "https://app.netlify.com/sites/evangadi-bestforum2025/overview",
+      // "http://localhost:3000",
     ];
 
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
